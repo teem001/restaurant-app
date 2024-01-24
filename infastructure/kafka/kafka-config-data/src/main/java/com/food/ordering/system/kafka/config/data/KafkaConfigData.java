@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class KafkaConfigData {
 
     private String bootStrapServers;
-    private String schemaRegistrationUrlKey;
+    private String schemaRegistryUrlKey;
     private String schemaRegistryUrl;
     private String numOfPartitions;
     private String replicationFactor;

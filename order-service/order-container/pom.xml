@@ -37,5 +37,4 @@
             <artifactId>order-application</artifactId>
         </dependency>
     </dependencies>
-
 </project>

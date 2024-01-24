@@ -25,6 +25,7 @@
         <module>infastructure/kafka/kafka-producer</module>
         <module>infastructure/kafka/kafka-model</module>
         <module>infastructure/kafka/kafka-config-data</module>
+        <module>common/common-application</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -34,8 +35,8 @@
     </parent>
 
     <properties>
-        <avro.version>1.11.0</avro.version>
-        <spring-kafka-version>2.3.2</spring-kafka-version>
+        <avro.version>1.11.3</avro.version>
+        <spring-kafka-version>3.0.4</spring-kafka-version>
         <kafka-avro-serializer-version>7.01</kafka-avro-serializer-version>
         <mockito-version>4.3.1</mockito-version>
     </properties>
@@ -49,6 +50,11 @@
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
                 <artifactId>order-application-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.food.ordering.system</groupId>
+                <artifactId>common-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
