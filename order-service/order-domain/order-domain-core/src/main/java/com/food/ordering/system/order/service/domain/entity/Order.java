@@ -6,12 +6,17 @@ import com.food.ordering.system.domain.valueobject.*;
 import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
 @Builder
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Order extends AggregateRoot<OrderId> {
 
     private final CustomerId customerId;

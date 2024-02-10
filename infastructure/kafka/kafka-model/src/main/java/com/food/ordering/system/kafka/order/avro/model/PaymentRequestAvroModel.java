@@ -10,9 +10,14 @@ import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.SchemaStore;
 import org.apache.avro.specific.AvroGenerated;
 import org.apache.avro.specific.SpecificData;
+import org.apache.avro.specific.SpecificRecord;
+import org.apache.avro.specific.SpecificRecordBase;
+
+import java.time.Instant;
+import java.util.UUID;
 
 @AvroGenerated
-public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+public class PaymentRequestAvroModel extends SpecificRecordBase implements SpecificRecord {
     private static final long serialVersionUID = 6799063450240354275L;
 
 
@@ -80,13 +85,13 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
         return DECODER.decode(b);
     }
 
-    private java.util.UUID id;
-    private java.util.UUID sagaId;
-    private java.util.UUID customerId;
-    private java.util.UUID orderId;
-    private java.lang.String price;
-    private java.time.Instant createdAt;
-    private com.food.ordering.system.kafka.order.avro.model.PaymentOrderStatus paymentOrderStatus;
+    private UUID id;
+    private String sagaId;
+    private UUID customerId;
+    private UUID orderId;
+    private String price;
+    private Instant createdAt;
+    private PaymentOrderStatus paymentOrderStatus;
 
     /**
      * Default constructor.  Note that this does not initialize fields
@@ -106,7 +111,7 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
      * @param createdAt The new value for createdAt
      * @param paymentOrderStatus The new value for paymentOrderStatus
      */
-    public PaymentRequestAvroModel(java.util.UUID id, java.util.UUID sagaId, java.util.UUID customerId, java.util.UUID orderId, java.lang.String price, java.time.Instant createdAt, com.food.ordering.system.kafka.order.avro.model.PaymentOrderStatus paymentOrderStatus) {
+    public PaymentRequestAvroModel(UUID id, String sagaId, java.util.UUID customerId, UUID orderId, String price, Instant createdAt, PaymentOrderStatus paymentOrderStatus) {
         this.id = id;
         this.sagaId = sagaId;
         this.customerId = customerId;
@@ -175,7 +180,7 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
                 id = (java.util.UUID) value$;
                 break;
             case 1:
-                sagaId = (java.util.UUID) value$;
+                sagaId = (String) value$;
                 break;
             case 2:
                 customerId = (java.util.UUID) value$;
@@ -218,7 +223,7 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
      * Gets the value of the 'sagaId' field.
      * @return The value of the 'sagaId' field.
      */
-    public java.util.UUID getSagaId() {
+    public String getSagaId() {
         return sagaId;
     }
 
@@ -227,7 +232,7 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
      * Sets the value of the 'sagaId' field.
      * @param value the value to set.
      */
-    public void setSagaId(java.util.UUID value) {
+    public void setSagaId(String value) {
         this.sagaId = value;
     }
 
@@ -357,13 +362,13 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
     public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<PaymentRequestAvroModel>
             implements org.apache.avro.data.RecordBuilder<PaymentRequestAvroModel> {
 
-        private java.util.UUID id;
-        private java.util.UUID sagaId;
-        private java.util.UUID customerId;
-        private java.util.UUID orderId;
-        private java.lang.String price;
-        private java.time.Instant createdAt;
-        private com.food.ordering.system.kafka.order.avro.model.PaymentOrderStatus paymentOrderStatus;
+        private UUID id;
+        private String sagaId;
+        private UUID customerId;
+        private UUID orderId;
+        private String price;
+        private Instant createdAt;
+        private PaymentOrderStatus paymentOrderStatus;
 
         /** Creates a new Builder */
         private Builder() {
@@ -410,7 +415,7 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
          * Creates a Builder by copying an existing PaymentRequestAvroModel instance
          * @param other The existing instance to copy.
          */
-        private Builder(com.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel other) {
+        private Builder(PaymentRequestAvroModel other) {
             super(SCHEMA$, MODEL$);
             if (isValidValue(fields()[0], other.id)) {
                 this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -486,7 +491,7 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
          * Gets the value of the 'sagaId' field.
          * @return The value.
          */
-        public java.util.UUID getSagaId() {
+        public String getSagaId() {
             return sagaId;
         }
 
@@ -496,7 +501,7 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
          * @param value The value of 'sagaId'.
          * @return This builder.
          */
-        public com.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel.Builder setSagaId(java.util.UUID value) {
+        public com.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel.Builder setSagaId(String value) {
             validate(fields()[1], value);
             this.sagaId = value;
             fieldSetFlags()[1] = true;
@@ -727,7 +732,7 @@ public class PaymentRequestAvroModel extends org.apache.avro.specific.SpecificRe
             try {
                 PaymentRequestAvroModel record = new PaymentRequestAvroModel();
                 record.id = fieldSetFlags()[0] ? this.id : (java.util.UUID) defaultValue(fields()[0]);
-                record.sagaId = fieldSetFlags()[1] ? this.sagaId : (java.util.UUID) defaultValue(fields()[1]);
+                record.sagaId = fieldSetFlags()[1] ? this.sagaId : (String) defaultValue(fields()[1]);
                 record.customerId = fieldSetFlags()[2] ? this.customerId : (java.util.UUID) defaultValue(fields()[2]);
                 record.orderId = fieldSetFlags()[3] ? this.orderId : (java.util.UUID) defaultValue(fields()[3]);
                 record.price = fieldSetFlags()[4] ? this.price : (java.lang.String) defaultValue(fields()[4]);

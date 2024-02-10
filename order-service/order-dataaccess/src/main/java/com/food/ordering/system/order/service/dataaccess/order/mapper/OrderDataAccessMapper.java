@@ -1,9 +1,9 @@
-package com.food.ordering.system.order.service.dataaccess.customer.mapper;
+package com.food.ordering.system.order.service.dataaccess.order.mapper;
 
 import com.food.ordering.system.domain.valueobject.*;
-import com.food.ordering.system.order.service.dataaccess.customer.entity.OrderAddressEntity;
-import com.food.ordering.system.order.service.dataaccess.customer.entity.OrderEntity;
-import com.food.ordering.system.order.service.dataaccess.customer.entity.OrderItemEntity;
+import com.food.ordering.system.order.service.dataaccess.order.entity.OrderAddressEntity;
+import com.food.ordering.system.order.service.dataaccess.order.entity.OrderEntity;
+import com.food.ordering.system.order.service.dataaccess.order.entity.OrderItemEntity;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.OrderItem;
 import com.food.ordering.system.order.service.domain.entity.Product;
@@ -49,7 +49,9 @@ public class OrderDataAccessMapper {
                 .orderItems(orderItemEtityToOrderItem(orderEntity.getOrderItemEntities()))
                 .trackingId(new TrackingId(orderEntity.getTrackingId()))
                 .orderStatus(orderEntity.getOrderStatus())
-                .failureMessage(orderEntity.getFailureMessages().isEmpty() ? new ArrayList<>() : new ArrayList<>(Arrays.asList(orderEntity.getFailureMessages().split(FAILURE_MESSAGE_DELIMITER))))
+                .failureMessage(orderEntity.getFailureMessages().isEmpty() ?
+                        new ArrayList<>() :
+                        new ArrayList<>(Arrays.asList(orderEntity.getFailureMessages().split(FAILURE_MESSAGE_DELIMITER))))
                 .build();
         order.setId(new OrderId(orderEntity.getId()));
 

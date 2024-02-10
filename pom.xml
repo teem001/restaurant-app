@@ -21,10 +21,6 @@
         <module>common/common-domain</module>
         <module>infastructure</module>
         <module>infastructure/kafka</module>
-        <module>infastructure/kafka/kafka-consumer</module>
-        <module>infastructure/kafka/kafka-producer</module>
-        <module>infastructure/kafka/kafka-model</module>
-        <module>infastructure/kafka/kafka-config-data</module>
         <module>common/common-application</module>
     </modules>
     <parent>

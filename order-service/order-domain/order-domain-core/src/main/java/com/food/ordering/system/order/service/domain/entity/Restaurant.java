@@ -2,14 +2,18 @@ package com.food.ordering.system.order.service.domain.entity;
 
 import com.food.ordering.system.domain.entity.AggregateRoot;
 import com.food.ordering.system.domain.valueobject.RestaurantId;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
 @Builder
 @Getter
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Restaurant extends AggregateRoot<RestaurantId> {
 
     private final List<Product> products;

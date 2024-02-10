@@ -1,12 +1,12 @@
 package com.food.ordering.system.order.service.domain;
 
-import com.food.ordering.system.domain.exception.OrderDomainException;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
 import com.food.ordering.system.order.service.domain.entity.Customer;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.Restaurant;
 import com.food.ordering.system.order.service.domain.event.OrderCreateEvent;
+import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
 import com.food.ordering.system.order.service.domain.mapper.OrderObjectMapper;
 import com.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
 import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
@@ -68,20 +68,20 @@ public class OrderCreateCommandHandler {
         Restaurant restaurant = orderObjectMapper.createOrderCommandToRestaurant(createOrderCommand);
         Optional<Restaurant> restaurantOptional = restaurantRepository.findRestaurant(restaurant);
 
-        if(restaurantOptional.isEmpty()){
+        if (restaurantOptional.isEmpty()) {
             log.warn("Restaurant with id {}", restaurant.getId());
             throw new OrderDomainException("Restaurant do not exist !!!");
         }
-        return  restaurantOptional.get();
+        return restaurantOptional.get();
     }
 
     private void checkCustomer(UUID customerId) {
 
         Optional<Customer> customerOptional = customerRepository.findCustomer(customerId);
 
-        if(customerOptional.isEmpty()){
+        if (customerOptional.isEmpty()) {
             log.warn("Customer does not exist with id: {}", customerId);
-            throw  new OrderDomainException("Customer does not exist");
+            throw new OrderDomainException("Customer does not exist");
         }
     }
 
