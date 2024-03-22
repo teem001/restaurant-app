@@ -22,11 +22,18 @@
         <module>infastructure</module>
         <module>infastructure/kafka</module>
         <module>common/common-application</module>
+        <module>customer-service</module>
+        <module>payment-service</module>
+        <module>payment-service/payment-domain</module>
+        <module>payment-service/payment-dataacess</module>
+        <module>payment-service/payment-messaging</module>
+        <module>payment-service/payment-domain/payment-domain-core</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.7</version>
+
         <relativePath/>
     </parent>
 
@@ -35,6 +42,7 @@
         <spring-kafka-version>3.0.4</spring-kafka-version>
         <kafka-avro-serializer-version>7.01</kafka-avro-serializer-version>
         <mockito-version>4.3.1</mockito-version>
+
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -115,16 +123,15 @@
         </dependency>
     </dependencies>
 
+
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.9.0</version>
-                <configuration>
-                    <release>17</release>
-                </configuration>
-            </plugin>
-        </plugins>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.9.0</version>
+                </plugin>
+            </plugins>
+
     </build>
 </project>

@@ -5,8 +5,6 @@ import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.ProductId;
 import lombok.Getter;
 
-import java.util.UUID;
-
 @Getter
 public class Product extends BaseEntity<ProductId> {
 
@@ -15,14 +13,17 @@ public class Product extends BaseEntity<ProductId> {
     private Money price;
 
     public Product(String name, Money price) {
+        super();
         this.name = name;
         this.price = price;
     }
     public Product(ProductId productId){
+        super();
         super.setId(productId);
     }
 
     public Product(ProductId productId, String name, Money price){
+        super();
         super.setId(productId);
         this.name = name;
         this.price = price;

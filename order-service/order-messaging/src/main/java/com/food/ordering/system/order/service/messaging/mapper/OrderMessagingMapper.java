@@ -12,6 +12,7 @@ import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 public class OrderMessagingMapper {
@@ -59,7 +60,7 @@ public class OrderMessagingMapper {
                 .setProducts(order.getOrderItems().stream().map(orderItem -> Product.newBuilder()
                         .setId(orderItem.getOrderId().getValue().toString())
                         .setQuantity(orderItem.getQuantity())
-                        .build()).toList())
+                        .build()).collect(Collectors.toList()))
                 .setPrice(order.getPrice().getAmount())
                 .setCreatedAt(domainEvent.getCreatedAt().toInstant())
                 .setRestaurantOrderStatus(RestaurantOrderStatus.PAID)
