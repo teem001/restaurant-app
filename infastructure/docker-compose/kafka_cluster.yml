@@ -52,7 +52,7 @@ services:
     volumes:
       - "./volumes/kafka/broker-2:/var/lib/kafka/data"
     networks:
-      - ${GLOBAL_NETWORK:-kafka}\
+      - ${GLOBAL_NETWORK:-kafka}
   kafka-broker-3:
     image: confluentinc/cp-schema-registry:${KAFKA_VERSION}
     hostname: kafka-broker-3
@@ -78,4 +78,4 @@ services:
     environment:
       ZK_HOSTS: "zookeeper:2181"
     networks:
-      -${GLOBAL-NETWORK:-kafka}
+       - ${GLOBAL-NETWORK:-kafka}

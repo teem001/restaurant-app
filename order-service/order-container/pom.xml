@@ -42,5 +42,47 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
-    <build>  </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+               <configuration>
+                   <image>
+                   <name>${project.groupId}/order.service:${project.version}</name>
+                   </image>
+               </configuration>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build-image</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            &lt;!&ndash; Use the spring-boot:build-image goal to build the Docker image &ndash;&gt;-->
+<!--                            <goal>build-image</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            &lt;!&ndash; Configure the Docker image name &ndash;&gt;-->
+<!--                            <image>${project.groupId}/order.service:${project.version}</image>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
+
 </project>

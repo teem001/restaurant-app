@@ -16,16 +16,56 @@ spring:
   jpa:
     open-in-view: false
     show-sql: true
-    database-platform: org.hibernate.dialectPostgresSQL9Dialect
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialectPostgresSQL9Dialect
+#    database-platform: org.hibernate.dialectPostgresSQL9Dialect
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialectPostgresSQL9Dialect
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchInserts=true&springtype=unspecified
-    username: postgress
-    password: admin
+    username: postgres
+    password: manoseni6.
     driver-class-name: org.postgresql.Driver
     platform: postgres
     schema: classpath:init-schema.sql
     initialization-mode: always
-  
+
+
+
+kafka-config:
+  schema-registry-url: http://localhost:8081
+  num-of-partitions: 3
+  replication-factor: 3
+  schema-registry-url-key: schema,registry.url
+  boot-strap-servers:localhost:19092, localhost:29092, localhost:39092
+
+kafka-producer-config:
+  key-serializer-class: org.apache.kafka.serialization.StringSerializer
+  value-serializer-class: io.confluent.kafka.serializer.KafkaAvroSerializer
+  compression-type: snappy
+  acks: all
+  batch-size: 16384
+  batch-size-boost-factor: 100
+  linger-ms: 5
+  request-timeout-ms: 60000
+  retry-count: 5
+
+
+kafka-consumer-config:
+  key-serializer-class: org.apache.kafka.serialization.StringDeserializer
+  value-serializer-class: io.confluent.kafka.serializer.KafkaAvroDeserializer
+  payment-consumer-group-id: payment-topic-consumer
+  restaurant-approval-consumer-group-id: restaurant-approval-topic-consumer
+  customer-group-id: customer-topic-consumer
+  auto-offset-reset: earliest
+  specific-avro-reader-key: specific.avro.reader
+  specific-avro-reader: true
+  batch-listener: true
+  auto-startup: true
+  concurrency-level: 3
+  session-timeout-ms: 10000
+  heartbeat-interval-ms: 3000
+  max-poll-interval-ms: 300000
+  max-poll-records: 500
+  max-partition-fetch-bytes-default: 1048576
+  max-partition-fetch-bytes-boost-factor: 1
+  poll-timeout-ms: 150

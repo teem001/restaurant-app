@@ -16,6 +16,7 @@ public class OrderItem extends BaseEntity<OrderItemId> {
 
 
     private OrderItem(Builder builder) {
+        super();
         super.setId(builder.id);
         product = builder.product;
         quantity = builder.quantity;

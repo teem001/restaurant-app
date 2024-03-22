@@ -14,7 +14,6 @@ import org.apache.avro.message.SchemaStore;
 import org.apache.avro.specific.AvroGenerated;
 import org.apache.avro.specific.SpecificData;
 
-import java.io.Serial;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
@@ -24,7 +23,7 @@ import java.util.UUID;
 @Getter
 @AvroGenerated
 public class RestaurantApprovalRequestAvroModel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  @Serial
+
   private static final long serialVersionUID = -3917361261016430486L;
 
 

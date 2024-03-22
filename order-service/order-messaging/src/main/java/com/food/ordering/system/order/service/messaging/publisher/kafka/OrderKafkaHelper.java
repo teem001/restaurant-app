@@ -6,8 +6,6 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import javax.validation.constraints.NotNull;
-
 @Component
 @Slf4j
 public class OrderKafkaHelper {
@@ -16,7 +14,7 @@ public class OrderKafkaHelper {
 
     public <T> ListenableFutureCallback<SendResult<String, T>> getCallBackMethod(String responseTopicName, T requestAvroModel, String ID) {
 
-        return new ListenableFutureCallback<>() {
+        return new ListenableFutureCallback<SendResult<String, T>>() {
             @Override
             public void onFailure(Throwable ex) {
                 log.error("Error while sending payment Request Approval with message {}, and topic {} ", responseTopicName, requestAvroModel, ex);
